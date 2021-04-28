@@ -50,11 +50,11 @@ def test(message):
                          str(weather["main"]['temp']) + "°C" + "\n" +
                          "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
                          "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+message3))
-   elif weather["main"]['temp'] < 80:  #при +30
-       status = bot.send_photo(message.chat.id, 'https://darkside.guru/files/404city.png', "Сейчас в городе " + str(weather["name"]) + " температура " +
-                    str(weather["main"]['temp']) + "°C" + "\n" +
-                     "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
-                    "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+random_message4))
+ #   elif weather["main"]['temp'] < 80:  #при +30
+ #       status = bot.send_photo(message.chat.id, 'https://darkside.guru/files/404city.png', "Сейчас в городе " + str(weather["name"]) + " температура " +
+  #                   str(weather["main"]['temp']) + "°C" + "\n" +
+  #                    "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
+   #                  "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+random_message4))
         else:   #при +10+
             status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/sad.jpeg', "Сейчас в городе " + str(weather["name"]) + " температура " +
                          str(weather["main"]['temp']) + "°C" + "\n" +
