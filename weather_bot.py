@@ -40,12 +40,12 @@ def test(message):
                          str(weather["main"]['temp']) + "°C" + "\n" +
                          "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
                          "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+message1))
-        elif weather["main"]['temp'] <= 0:   # - 10 - 0
+        elif weather["main"]['temp'] < 0:   # - 10 - 0
             status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/litres.jpeg', "Сейчас в городе " + str(weather["name"]) + " температура " +
                          str(weather["main"]['temp']) + "°C" + "\n" +
                          "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
                          "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+message2))
-        elif weather["main"]['temp'] <= 10:  #от 0 до +10
+        elif weather["main"]['temp'] < 10:  #от 0 до +10
             status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/lamoda.jpeg', "Сейчас в городе " + str(weather["name"]) + " температура " +
                          str(weather["main"]['temp']) + "°C" + "\n" +
                          "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
