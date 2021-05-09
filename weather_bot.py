@@ -67,8 +67,7 @@ def test(message):
                          str(weather["main"]['temp']) + "°C" + "\n" +
                          "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
                          "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+message4))
-	    keyboard = types.InlineKeyboardMarkup(row_width=1) # новая строка
-    keyboard.add(*buttons) # новая строка
+    			keyboard.add(*buttons) # новая строка
 
     except:
         bot.send_photo(message.chat.id, 'https://darkside.guru/files/404city.png', "Город " + city_name + " не найден") # сообщение в случае если город не найден
