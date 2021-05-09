@@ -2,6 +2,13 @@ import requests
 import telebot
 import random
 
+@dp.message_handler(commands="inline_url") # новая строка
+async def cmd_inline_url(message: types.Message):# новая строка
+    buttons = [# новая строка
+        types.InlineKeyboardButton(text="GitHub", url="https://github.com"),] # новая строка
+    keyboard = types.InlineKeyboardMarkup(row_width=1) # новая строка
+    keyboard.add(*buttons) # новая строка
+
 url = 'http://api.openweathermap.org/data/2.5/weather' #open weather url
 api_open_weather = '966cc6ce89188b2bc797546a3487bf55'#ключ open weather api
 api_telegram_token = '1773699578:AAFWpnvES0Zqzky7g1k8iBPHbEh0UF3htnI' #токен telegram api
@@ -13,7 +20,7 @@ bot = telebot.TeleBot(api_telegram_token)
 
 link1 = "https://ivi.ru"
 link2 = "https://litres.ru"
-link3 = "https://lamoda.ru"
+link3 = "https://lamoda.ru" 
 link4 = "https://leroymerlin.ru"
 
 message1 = "Сегодня холодно, оставайтесь дома! А чтобы скрасить вечер можете посмотреть фильм! \n"+ link1
@@ -55,23 +62,13 @@ def test(message):
                          str(weather["main"]['temp']) + "°C" + "\n" +
                          "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
                          "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+message3))
- #   elif weather["main"]['temp'] < 80:  #при +30
- #       status = bot.send_photo(message.chat.id, 'https://darkside.guru/files/404city.png', "Сейчас в городе " + str(weather["name"]) + " температура " +
-  #                   str(weather["main"]['temp']) + "°C" + "\n" +
-  #                    "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
-   #                  "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+random_message4))
         else:   #при +10+
             status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/sad.jpeg', "Сейчас в городе " + str(weather["name"]) + " температура " +
                          str(weather["main"]['temp']) + "°C" + "\n" +
                          "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
                          "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+message4))
-	
-       # bot.send_message(message.chat.id, "Сейчас в городе " + str(weather["name"]) + " температура " +
-       #                 str(weather["main"]['temp']) + "°C" + "\n" +
-       #                 "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
-       #                 "На улице сейчас " + str(weather['weather'][0]["description"]) + "\n"+
-       #                 "-------------------------------------------------------------------"
-       #                 "\n" + status)
+	    keyboard = types.InlineKeyboardMarkup(row_width=1) # новая строка
+    keyboard.add(*buttons) # новая строка
 
     except:
         bot.send_photo(message.chat.id, 'https://darkside.guru/files/404city.png', "Город " + city_name + " не найден") # сообщение в случае если город не найден
