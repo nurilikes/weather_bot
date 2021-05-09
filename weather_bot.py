@@ -26,6 +26,8 @@ random_message2 = random.choice(message2)
 random_message3 = random.choice(message3)
 random_message4 = random.choice(message4)
 menu = telebot.types.InlineKeyboardMarkup()
+menu1 = menu.add(telebot.types.InlineKeyboardButton(text = 'ссылка бля', url ='https://google.com'))
+
 
 @bot.message_handler(commands=['start']) #старт
 def welcome(message):
@@ -53,8 +55,7 @@ def test(message):
             status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/lamoda.jpeg', "Сейчас в городе " + str(weather["name"]) + " температура " +
                          str(weather["main"]['temp']) + "°C" + "\n" +
                          "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
-                         "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+message3)) 
-			menu.add(telebot.types.InlineKeyboardButton(text = 'Первая кнопка', url ='http://f0535055.xsph.ru/1/lamoda.jpeg'))  #new string
+                         "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+message3+menu1)) 
         else:   #при +10+
             status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/sad.jpeg', "Сейчас в городе " + str(weather["name"]) + " температура " +
                          str(weather["main"]['temp']) + "°C" + "\n" +
