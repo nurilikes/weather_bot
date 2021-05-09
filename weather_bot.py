@@ -34,12 +34,11 @@ def welcome(message):
 @bot.message_handler(content_types=['text']) #обработчик
 def test(message):
     city_name = message.text
-menu1 = telebot.types.InlineKeyboardMarkup() #new string
     try:
         params = {'APPID': api_open_weather, 'q': city_name, 'units': 'metric', 'lang': 'ru'}
         result = requests.get(url, params=params)#параметры api open weather
         weather = result.json()#экспорт параметров
-
+	menu1 = telebot.types.InlineKeyboardMarkup() #new string
         if weather["main"]['temp'] < -10:   #от -бесконечно до -10
             status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/ivi.jpeg', "Сейчас в городе " + str(weather["name"]) + " температура " +
                          str(weather["main"]['temp']) + "°C" + "\n" +
