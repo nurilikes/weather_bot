@@ -26,7 +26,7 @@ random_message2 = random.choice(message2)
 random_message3 = random.choice(message3)
 random_message4 = random.choice(message4)
 menu = telebot.types.InlineKeyboardMarkup()
-menu1 = menu.add(telebot.types.InlineKeyboardButton(text = 'ссылка', url ='https://google.com'))
+menu.add(telebot.types.InlineKeyboardButton(text = 'ссылка', url ='https://google.com'))
 
 
 @bot.message_handler(commands=['start']) #старт
@@ -60,7 +60,8 @@ def test(message):
             status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/sad.jpeg', "Сейчас в городе " + str(weather["name"]) + " температура " +
                          str(weather["main"]['temp']) + "°C" + "\n" +
                          "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
-                         "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+message4) + menu1)
+                         "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+message4)
+                         menu.add(telebot.types.InlineKeyboardButton(text = 'ссылка', url ='https://google.com')))
 
     except:
         bot.send_photo(message.chat.id, 'https://darkside.guru/files/404city.png', "Город " + city_name + " не найден") # сообщение в случае если город не найден
