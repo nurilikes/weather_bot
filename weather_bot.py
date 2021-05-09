@@ -25,6 +25,7 @@ random_message1 = random.choice(message1)
 random_message2 = random.choice(message2)
 random_message3 = random.choice(message3)
 random_message4 = random.choice(message4)
+menu1 = telebot.types.InlineKeyboardMarkup()
 
 @bot.message_handler(commands=['start']) #старт
 def welcome(message):
@@ -38,7 +39,6 @@ def test(message):
         params = {'APPID': api_open_weather, 'q': city_name, 'units': 'metric', 'lang': 'ru'}
         result = requests.get(url, params=params)#параметры api open weather
         weather = result.json()#экспорт параметров
-	menu1 = telebot.types.InlineKeyboardMarkup() #new string
         if weather["main"]['temp'] < -10:   #от -бесконечно до -10
             status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/ivi.jpeg', "Сейчас в городе " + str(weather["name"]) + " температура " +
                          str(weather["main"]['temp']) + "°C" + "\n" +
