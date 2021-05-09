@@ -2,13 +2,6 @@ import requests
 import telebot
 import random
 
-@dp.message_handler(commands="inline_url") # новая строка
-async def cmd_inline_url(message: types.Message):# новая строка
-    buttons = [# новая строка
-        types.InlineKeyboardButton(text="GitHub", url="https://github.com"),] # новая строка
-    keyboard = types.InlineKeyboardMarkup(row_width=1) # новая строка
-    keyboard.add(*buttons) # новая строка
-
 url = 'http://api.openweathermap.org/data/2.5/weather' #open weather url
 api_open_weather = '966cc6ce89188b2bc797546a3487bf55'#ключ open weather api
 api_telegram_token = '1773699578:AAFWpnvES0Zqzky7g1k8iBPHbEh0UF3htnI' #токен telegram api
@@ -23,7 +16,10 @@ link2 = "https://litres.ru"
 link3 = "https://lamoda.ru" 
 link4 = "https://leroymerlin.ru"
 
-message1 = "Сегодня холодно, оставайтесь дома! А чтобы скрасить вечер можете посмотреть фильм! \n"+ link1
+message1 = "Сегодня холодно, оставайтесь дома! А чтобы скрасить вечер можете посмотреть фильм! \n "+ link1 
+@bot.message_handler(content_types = ['text'])
+
+  /  menu1.add(telebot.types.InlineKeyboardButton(text = 'Первая кнопка', callback_data ='first'))
 message2 = "Если нет желания сегодня гулять, можно устроиться дома в кресле и почитать любую книгу из онлайн-каталога! \n" + link2
 message3 = "Если вы еще сменили верхнюю одежду, самое время это сделать! С ассортиментом можете ознакомиться на сайте магазина по ссылке ниже. \n" + link3
 message4 = "Дачный сезон можно считать открытым! Семена, рассада, лейки, лопаты, грабли, газонокосилки и прочий садовый инвентарь можно купить в магазине, представленном ниже. \n" + link4
@@ -41,6 +37,7 @@ def welcome(message):
 @bot.message_handler(content_types=['text']) #обработчик
 def test(message):
     city_name = message.text
+menu1 = telebot.types.InlineKeyboardMarkup() #new string
 
     try:
         params = {'APPID': api_open_weather, 'q': city_name, 'units': 'metric', 'lang': 'ru'}
@@ -61,13 +58,13 @@ def test(message):
             status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/lamoda.jpeg', "Сейчас в городе " + str(weather["name"]) + " температура " +
                          str(weather["main"]['temp']) + "°C" + "\n" +
                          "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
-                         "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+message3))
+                         "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+message3)) 
+	menu1.add(telebot.types.InlineKeyboardButton(text = 'Первая кнопка', url ='http://f0535055.xsph.ru/1/lamoda.jpeg'))  #new string
         else:   #при +10+
             status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/sad.jpeg', "Сейчас в городе " + str(weather["name"]) + " температура " +
                          str(weather["main"]['temp']) + "°C" + "\n" +
                          "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
                          "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+message4))
-    			keyboard.add(*buttons) # новая строка
 
     except:
         bot.send_photo(message.chat.id, 'https://darkside.guru/files/404city.png', "Город " + city_name + " не найден") # сообщение в случае если город не найден
