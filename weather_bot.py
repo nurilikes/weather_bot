@@ -35,7 +35,6 @@ def welcome(message):
 def test(message):
     city_name = message.text
 menu1 = telebot.types.InlineKeyboardMarkup() #new string
-
     try:
         params = {'APPID': api_open_weather, 'q': city_name, 'units': 'metric', 'lang': 'ru'}
         result = requests.get(url, params=params)#параметры api open weather
