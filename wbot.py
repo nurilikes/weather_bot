@@ -4,23 +4,21 @@ import random
 from telebot import types
 
 url = 'http://api.openweathermap.org/data/2.5/weather' #open weather url
-api_open_weather = '966cc6ce89188b2bc797546a3487bf55'#ключ open weather api
-api_telegram_token = '1629247479:AAHFkYhoIOY1VyaOWm4Y0b70m1DHYEMo05Q' #токен telegram api
+api_open_weather = '966cc6ce89188b2bc797546a3487bf55'#РєР»СЋС‡ open weather api
+api_telegram_token = '1629247479:AAHFkYhoIOY1VyaOWm4Y0b70m1DHYEMo05Q' #С‚РѕРєРµРЅ telegram api
 
 print("")
-print("initialize") #сообщение в консоль
-
-bot = telebot.TeleBot(api_telegram_token)
+print("initialize") #СЃРѕРѕР±С‰РµРЅРёРµ РІ РєРѕРЅСЃРѕР»СЊ
 
 link1 = "https://ivi.ru"
 link2 = "https://litres.ru"
 link3 = "https://lamoda.ru"
 link4 = "https://leroymerlin.ru"
 
-message1 = "?Сегодня холодно, оставайтесь дома! А чтобы скрасить вечер можете посмотреть фильм! \n" + link1
-message2 = "?Если нет желания сегодня гулять, можно устроиться дома в кресле и почитать любую книгу из онлайн-каталога! \n" + link2
-message3 = "?Если вы еще сменили верхнюю одежду, самое время это сделать! С ассортиментом можете ознакомиться на сайте магазина по ссылке ниже. \n" + link3
-message4 = "?Дачный сезон можно считать открытым! Семена, рассада, лейки, лопаты, грабли, газонокосилки и прочий садовый инвентарь можно купить в магазине, представленном ниже. \n"
+message1 = "РЎРµРіРѕРґРЅСЏ С…РѕР»РѕРґРЅРѕ, РѕСЃС‚Р°РІР°Р№С‚РµСЃСЊ РґРѕРјР°! Рђ С‡С‚РѕР±С‹ СЃРєСЂР°СЃРёС‚СЊ РІРµС‡РµСЂ РјРѕР¶РµС‚Рµ РїРѕСЃРјРѕС‚СЂРµС‚СЊ С„РёР»СЊРј! \n" + link1
+message2 = "Р•СЃР»Рё РЅРµС‚ Р¶РµР»Р°РЅРёСЏ СЃРµРіРѕРґРЅСЏ РіСѓР»СЏС‚СЊ, РјРѕР¶РЅРѕ СѓСЃС‚СЂРѕРёС‚СЊСЃСЏ РґРѕРјР° РІ РєСЂРµСЃР»Рµ Рё РїРѕС‡РёС‚Р°С‚СЊ Р»СЋР±СѓСЋ РєРЅРёРіСѓ РёР· РѕРЅР»Р°Р№РЅ-РєР°С‚Р°Р»РѕРіР°! \n" + link2
+message3 = "Р•СЃР»Рё РІС‹ РµС‰Рµ СЃРјРµРЅРёР»Рё РІРµСЂС…РЅСЋСЋ РѕРґРµР¶РґСѓ, СЃР°РјРѕРµ РІСЂРµРјСЏ СЌС‚Рѕ СЃРґРµР»Р°С‚СЊ! РЎ Р°СЃСЃРѕСЂС‚РёРјРµРЅС‚РѕРј РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ РЅР° СЃР°Р№С‚Рµ РјР°РіР°Р·РёРЅР° РїРѕ СЃСЃС‹Р»РєРµ РЅРёР¶Рµ. \n" + link3
+message4 = "Р”Р°С‡РЅС‹Р№ СЃРµР·РѕРЅ РјРѕР¶РЅРѕ СЃС‡РёС‚Р°С‚СЊ РѕС‚РєСЂС‹С‚С‹Рј! РЎРµРјРµРЅР°, СЂР°СЃСЃР°РґР°, Р»РµР№РєРё, Р»РѕРїР°С‚С‹, РіСЂР°Р±Р»Рё, РіР°Р·РѕРЅРѕРєРѕСЃРёР»РєРё Рё РїСЂРѕС‡РёР№ СЃР°РґРѕРІС‹Р№ РёРЅРІРµРЅС‚Р°СЂСЊ РјРѕР¶РЅРѕ РєСѓРїРёС‚СЊ РІ РјР°РіР°Р·РёРЅРµ, РїСЂРµРґСЃС‚Р°РІР»РµРЅРЅРѕРј РЅРёР¶Рµ. \n"
 
 random_message1 = random.choice(message1)
 random_message2 = random.choice(message2)
@@ -30,57 +28,57 @@ random_message4 = random.choice(message4)
 
 
 
-@bot.message_handler(commands=['start']) #старт
+@bot.message_handler(commands=['start']) #СЃС‚Р°СЂС‚
 def welcome(message):
-    bot.send_message(message.chat.id, f'Привет!  {message.from_user.first_name}'
-                                      f', напиши мне название города, а я тебе скажу, какая погода в нем!'); #Сообщение при запуске
+    bot.send_message(message.chat.id, f'РџСЂРёРІРµС‚!  {message.from_user.first_name}'
+                                      f', РЅР°РїРёС€Рё РјРЅРµ РЅР°Р·РІР°РЅРёРµ РіРѕСЂРѕРґР°, Р° СЏ С‚РµР±Рµ СЃРєР°Р¶Сѓ, РєР°РєР°СЏ РїРѕРіРѕРґР° РІ РЅРµРј!'); #РЎРѕРѕР±С‰РµРЅРёРµ РїСЂРё Р·Р°РїСѓСЃРєРµ
 
 
 
-@bot.message_handler(content_types=['text']) #обработчик
+@bot.message_handler(content_types=['text']) #РѕР±СЂР°Р±РѕС‚С‡РёРє
 def test(message):
     markup = types.InlineKeyboardMarkup();
-    ivi = types.InlineKeyboardButton(text='Перейти на ivi.ru', url=link1);
-    litres = types.InlineKeyboardButton(text='Перейти на litres.ru', url=link2);
-    lamoda = types.InlineKeyboardButton(text='Перейти на lamoda.ru', url=link3);
-    leroymerlin= types.InlineKeyboardButton(text='Перейти на leroymerlin.ru', url=link4);
+    ivi = types.InlineKeyboardButton(text='РџРµСЂРµР№С‚Рё РЅР° ivi.ru', url=link1);
+    litres = types.InlineKeyboardButton(text='РџРµСЂРµР№С‚Рё РЅР° litres.ru', url=link2);
+    lamoda = types.InlineKeyboardButton(text='РџРµСЂРµР№С‚Рё РЅР° lamoda.ru', url=link3);
+    leroymerlin= types.InlineKeyboardButton(text='РџРµСЂРµР№С‚Рё РЅР° leroymerlin.ru', url=link4);
 
 
     city_name = message.text
 
     try:
         params = {'APPID': api_open_weather, 'q': city_name, 'units': 'metric', 'lang': 'ru'}
-        result = requests.get(url, params=params)#параметры api open weather
-        weather = result.json()#экспорт параметров
+        result = requests.get(url, params=params)#РїР°СЂР°РјРµС‚СЂС‹ api open weather
+        weather = result.json()#СЌРєСЃРїРѕСЂС‚ РїР°СЂР°РјРµС‚СЂРѕРІ
 
-        if weather["main"]['temp'] < -10:   #от -бесконечно до -10
-            status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/ivi.jpeg', "Сейчас в городе " + str(weather["name"]) + " температура " +
-                         str(weather["main"]['temp']) + "°C" + "\n" +
-                         "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
-                         "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+message1))
+        if weather["main"]['temp'] < -10:   #РѕС‚ -Р±РµСЃРєРѕРЅРµС‡РЅРѕ РґРѕ -10
+            status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/ivi.jpeg', "РЎРµР№С‡Р°СЃ РІ РіРѕСЂРѕРґРµ " + str(weather["name"]) + " С‚РµРјРїРµСЂР°С‚СѓСЂР° " +
+                         str(weather["main"]['temp']) + "В°C" + "\n" +
+                         "Р’Р»Р°Р¶РЅРѕСЃС‚СЊ: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
+                         "РќР° СѓР»РёС†Рµ СЃРµР№С‡Р°СЃ " + str(weather['weather'][0]["description"]+"\n"+message1))
         elif weather["main"]['temp'] < 0:   # - 10 - 0
-            status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/litres.jpeg', "Сейчас в городе " + str(weather["name"]) + " температура " +
-                         str(weather["main"]['temp']) + "°C" + "\n" +
-                         "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
-                         "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+message2))
-        elif weather["main"]['temp'] < 10:  #от 0 до +10
-            status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/lamoda.jpeg', "Сейчас в городе " + str(weather["name"]) + " температура " +
-                         str(weather["main"]['temp']) + "°C" + "\n" +
-                         "Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
-                         "На улице сейчас " + str(weather['weather'][0]["description"]+"\n"+message3))
+            status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/litres.jpeg', "РЎРµР№С‡Р°СЃ РІ РіРѕСЂРѕРґРµ " + str(weather["name"]) + " С‚РµРјРїРµСЂР°С‚СѓСЂР° " +
+                         str(weather["main"]['temp']) + "В°C" + "\n" +
+                         "Р’Р»Р°Р¶РЅРѕСЃС‚СЊ: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
+                         "РќР° СѓР»РёС†Рµ СЃРµР№С‡Р°СЃ " + str(weather['weather'][0]["description"]+"\n"+message2))
+        elif weather["main"]['temp'] < 10:  #РѕС‚ 0 РґРѕ +10
+            status = bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/lamoda.jpeg', "РЎРµР№С‡Р°СЃ РІ РіРѕСЂРѕРґРµ " + str(weather["name"]) + " С‚РµРјРїРµСЂР°С‚СѓСЂР° " +
+                         str(weather["main"]['temp']) + "В°C" + "\n" +
+                         "Р’Р»Р°Р¶РЅРѕСЃС‚СЊ: " + str(int(weather['main']['humidity'])) + "%" + "\n" +
+                         "РќР° СѓР»РёС†Рµ СЃРµР№С‡Р°СЃ " + str(weather['weather'][0]["description"]+"\n"+message3))
         else: status = markup.add(leroymerlin)
-        bot.send_message(message.chat.id, "??Сейчас в городе " + str(weather["name"])+ " температура " + str(weather["main"]['temp']) + "°C" + "\n" +"??Влажность: " + str(int(weather['main']['humidity'])) + "%" + "\n" + message4, "")
+        bot.send_message(message.chat.id, "??РЎРµР№С‡Р°СЃ РІ РіРѕСЂРѕРґРµ " + str(weather["name"])+ " С‚РµРјРїРµСЂР°С‚СѓСЂР° " + str(weather["main"]['temp']) + "В°C" + "\n" +"??Р’Р»Р°Р¶РЅРѕСЃС‚СЊ: " + str(int(weather['main']['humidity'])) + "%" + "\n" + message4, "")
         bot.send_photo(message.chat.id, 'http://f0535055.xsph.ru/1/sad.jpeg', reply_markup=markup);
 
 
 
 
     except:
-        bot.send_photo(message.chat.id, 'https://darkside.guru/files/404city.png', "Город " + city_name + " не найден"); # сообщение в случае если город не найден
+        bot.send_photo(message.chat.id, 'https://darkside.guru/files/404city.png', "Р“РѕСЂРѕРґ " + city_name + " РЅРµ РЅР°Р№РґРµРЅ"); # СЃРѕРѕР±С‰РµРЅРёРµ РІ СЃР»СѓС‡Р°Рµ РµСЃР»Рё РіРѕСЂРѕРґ РЅРµ РЅР°Р№РґРµРЅ
 
 
 
-print("Started!")#сообщение в консоль
+print("Started!")#СЃРѕРѕР±С‰РµРЅРёРµ РІ РєРѕРЅСЃРѕР»СЊ
 bot.polling(none_stop=True, interval=0)
 print("")
-print("Stopped!")#сообщение в консоль
+print("Stopped!")#СЃРѕРѕР±С‰РµРЅРёРµ РІ РєРѕРЅСЃРѕР»СЊ
