@@ -4,7 +4,7 @@ import random
 
 url = 'http://api.openweathermap.org/data/2.5/weather' #open weather url
 api_open_weather = '966cc6ce89188b2bc797546a3487bf55'#ключ open weather api
-api_telegram_token = '1629247479:AAHFkYhoIOY1VyaOWm4Y0b70m1DHYEMo05Q' #токен telegram api
+api_telegram_token = '1451368092:AAHpeZXoLBhTt7PBPlUddsv-yZUwweqRMBI' #токен telegram api
 
 print("")
 print("initialize") #сообщение в консоль
