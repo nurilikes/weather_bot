@@ -26,9 +26,7 @@ random_message3 = random.choice(message3)
 random_message4 = random.choice(message4)
 
 
-
-
-@bot.message_handler(commands=['start']) #старт
+@bot.message_handler(commands=['start'])
 def welcome(message):
     bot.send_message(message.chat.id, f'Привет!  {message.from_user.first_name}'
                                       f', напиши мне название города, а я тебе скажу, какая погода в нем!'); #Сообщение при запуске
