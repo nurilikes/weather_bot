@@ -25,14 +25,11 @@ random_message1 = random.choice(message1)
 random_message2 = random.choice(message2)
 random_message3 = random.choice(message3)
 random_message4 = random.choice(message4)
-menu = telebot.types.InlineKeyboardMarkup()
-menu.add(telebot.types.InlineKeyboardButton(text = 'ссылка', url ='https://google.com'))
-
 
 @bot.message_handler(commands=['start']) #старт
 def welcome(message):
     bot.send_message(message.chat.id, f'Привет!  {message.from_user.first_name}'
-                                      f' напиши название города и узнай погоду в нём.') #Сообщение при запуске
+                                      f', напиши мне название города, а я тебе скажу, какая погода в нем!'); #Сообщение при запуске
 
 @bot.message_handler(content_types=['text']) #обработчик
 def test(message):
