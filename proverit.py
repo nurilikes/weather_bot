@@ -42,7 +42,7 @@ def test(message):
     lamoda = types.InlineKeyboardButton(text='Перейти на lamoda.ru', url=link3);
     leroymerlin= types.InlineKeyboardButton(text='Перейти на leroymerlin.ru', url=link4);
 
-	city_name = message.text	
+city_name = message.text	
 	
     try:
         params = {'APPID': api_open_weather, 'q': city_name, 'units': 'metric', 'lang': 'ru'}
